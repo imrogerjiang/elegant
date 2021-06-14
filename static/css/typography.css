@@ -1,5 +1,5 @@
 :root {
-  --headingBorderBottomWidth: 1px;
+  --headingBorderBottomWidth: 0px;
   --headingBorderBottomStyle: solid;
   /* Headings that are not inside article. Like in sidebar are "others" */
   --headingOthersLineHeight: 1.3rem;
