@@ -8,7 +8,7 @@
         {% if PLUGINS and 'assets' in PLUGINS %}
         {% include '_includes/minify_css.html' with context %}
         {% else %}
-        <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/css/elegant.prod.9e9d5ce754.css" media="screen">
+        <!-- <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/css/elegant.prod.9e9d5ce754.css" media="screen"> -->
         <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/css/clean-blog.css" media="screen">
         <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/css/custom.css" media="screen">
         {% endif %}
@@ -51,9 +51,65 @@
         {% include '_includes/feeds.html' %}
         {% endblock feed_links %}
         {% include '_includes/analytics.html' %}
+
+        <!-- From clean-blog -->
+        <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" />
     </head>
     <body>
         <div id="content">
+            <!-- Navigation-->
+            <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+                <div class="container px-4 px-lg-5">
+                    <a class="navbar-brand" href="{{ SITEURL }}/">{{ SITENAME }}</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                        Menu
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarResponsive">
+                        <ul class="navbar-nav ms-auto py-4 py-lg-0">
+                            {% if DISPLAY_PAGES_ON_MENU %}
+                            {% for p in pages %}
+                            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a></li>
+                            {% endfor %}
+                            {% endif %}
+                            {% from '_includes/_defaults.html' import TAGS_URL, CATEGORIES_URL, ARCHIVES_URL, SEARCH_URL with context %}
+                            <li {% if page_name == 'categories' %} class="active"{% endif %}><a href="{{ SITEURL }}/{{ CATEGORIES_URL }}">Categories</a></li>
+                            <li class="nav-item {% if page_name == 'tags' %}active{% endif %}"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{{ SITEURL }}/{{ TAGS_URL }}">Tags</a></li>
+                            <li class="nav-item {% if page_name == 'archives' %}active{% endif %}"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{{ SITEURL }}/{{ ARCHIVES_URL }}">Archives</a></li>
+                            <!-- <li class="nav-item"><form class="navbar-search" action="{{ SITEURL }}/{{ SEARCH_URL }}" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li> -->
+                            
+                            
+                            <!-- <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="index.html">Home</a></li>
+                            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="about.html">About</a></li>
+                            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="post.html">Sample Post</a></li>
+                            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="contact.html">Contact</a></li> -->
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <!-- Page Header-->
+            <header class="masthead" style="background-image: url('assets/img/post-bg.jpg')">
+                <div class="container position-relative px-4 px-lg-5">
+                    <div class="row gx-4 gx-lg-5 justify-content-center">
+                        <div class="col-md-10 col-lg-8 col-xl-7">
+                            <div class="post-heading">
+                                <h1>Man must explore, and this is exploration at its greatest</h1>
+                                <h2 class="subheading">Problems look mighty small from 150 miles up</h2>
+                                <span class="meta">
+                                    Posted by
+                                    <a href="#!">Start Bootstrap</a>
+                                    on August 24, 2021
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Below is elegant. Above is clean-blog -->
             <div class="navbar navbar-static-top">
                 <div class="navbar-inner">
                     <div class="container-fluid">
